@@ -1,6 +1,4 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+LIVE AT : https://todo-list-tailwind-vdkp.netlify.app/
 ![Screenshot 2022-02-16 211751](https://user-images.githubusercontent.com/81632171/154302227-646df68b-29ee-4906-befc-5acd5e9d4d8f.png)
 
 
