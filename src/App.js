@@ -62,7 +62,7 @@ function App() {
         </h1>
         <form onSubmit={submitHandler} className="flex justify-center ">
           <input
-            className="w-60 h-10 rounded-lg mx-2 text-gray-700 font-semibold text-xl"
+            className="w-80 h-10 px-2 rounded-lg mx-2 text-gray-700 font-semibold text-xl"
             type="text"
             name="task"
             value={todo.task}
@@ -70,7 +70,7 @@ function App() {
           />
           <button
             type="submit"
-            className=" text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
+            className=" w-20 text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
           >
             ADD
           </button>
