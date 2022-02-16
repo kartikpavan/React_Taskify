@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import List from "./List";
+import Alert from "./Alert";
 
 //! Displaying list items on Page RELOAD if there are any (Local Storage)
 const getLocalStorage = () => {
@@ -12,6 +13,7 @@ const getLocalStorage = () => {
 };
 
 function App() {
+  const [alert, setAlert] = useState({ show: false, type: "", message: "" });
   const [list, setList] = useState(getLocalStorage());
   const [todo, setTodo] = useState({
     id: "",
@@ -22,17 +24,25 @@ function App() {
   const submitHandler = (e) => {
     e.preventDefault();
     if (!todo.task) {
-      alert("ERROR!! Please fill the empty field");
+      showAlert(true, "danger", "ERROR!! Please enter Value");
+      console.log("NO you cant do");
     } else {
       const newItem = { ...todo, id: new Date().getTime().toString() };
       setList([...list, newItem]);
       setTodo({ ...todo, task: "" });
+      showAlert(true, "success", "SUCCESS! Task added to the List ");
     }
+  };
+
+  //! alert function
+  const showAlert = (show = false, type = "", message = "") => {
+    setAlert({ show, type, message });
   };
 
   //! remove Single todo item
   const removeTodo = (id) => {
     setList(list.filter((item) => item.id !== id));
+    showAlert(true, "success", "SUCCESS! Task Removed from the List ");
   };
   //!toggle Complete todo
   const toggleComplete = (id) => {
@@ -44,6 +54,7 @@ function App() {
         return todo;
       })
     );
+    showAlert(true, "success", "TASK COMPLETED!!");
   };
 
   //! local storage
@@ -56,6 +67,11 @@ function App() {
 
   return (
     <div className=" w-2/6 mt-20 p-4 mx-auto text-center text-gray-200 rounded-xl shadow bg-gradient-to-br from-purple-600 to-blue-500 ">
+      <article>
+        {alert.show ? (
+          <Alert {...alert} showAlert={showAlert} list={list} />
+        ) : null}
+      </article>
       <header>
         <h1 className="text-3xl font-bold mt-1 mb-6 ">
           Todo App ({new Date().toLocaleDateString("en-us", options)})
@@ -86,7 +102,10 @@ function App() {
           <button
             // className="bg-red-800 w-full rounded-lg py-1 text-lg mt-4 "
             class="py-2.5 px-5 mr-2 w-full mt-4 mb-0 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-            onClick={() => setList([])}
+            onClick={() => {
+              setList([]);
+              showAlert(true, "danger", "ALL ITEMS REMOVED");
+            }}
           >
             Clear ALL
           </button>

@@ -7,7 +7,7 @@ function List({ items, removeTodo, toggleComplete }) {
       {items.map((todo) => {
         return (
           <div
-            className="flex justify-between mx-9 my-4 p-3 rounded-full shadow-md shadow-gray-700/50"
+            className="flex justify-between mx-9 my-4 p-3 rounded-xl shadow-md shadow-gray-700/50"
             key={todo.id}
           >
             <div className="flex items-center gap-4">
