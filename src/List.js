@@ -13,7 +13,7 @@ function List({ items, removeTodo, toggleComplete }) {
             <div className="flex items-center gap-4">
               <input
                 type="checkbox"
-                class="form-checkbox h-4 w-4 text-purple-600"
+                className="checkbox checkbox-accent"
                 onClick={() => toggleComplete(todo.id)}
               />
               <h3
